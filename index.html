@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src * 'self' 'unsafe-inline'; media-src *; img-src * data:;">
     <title>Signage.Exceed</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel= "stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -18,15 +19,7 @@
                 <option value="">Selecione um vídeo</option>
                 <option value="https://drive.google.com/file/d/1jETp7ZFglQV8e_VqIPWEPjeE3kVvEAml/preview">TElevador</option>
                 <option value="https://drive.google.com/file/d/1geQuGZ5XIREzB_XNoSLnlle1oxhBVHyQ/preview">3andar-Video-Pistol</option>
-                <option value="https://drive.google.com/file/d/1geQuGZ5XIREzB_XNoSLnlle1oxhBVHyQ/preview">3andar-Imagem-Pistol</option>
-                <option value="https://drive.google.com/file/d/1geQuGZ5XIREzB_XNoSLnlle1oxhBVHyQ/preview">3andar-Video-Blaston</option>
-                <option value="https://drive.google.com/file/d/1geQuGZ5XIREzB_XNoSLnlle1oxhBVHyQ/preview">3andar-Imagem-Blaston</option>
-                <option value="https://drive.google.com/file/d/1geQuGZ5XIREzB_XNoSLnlle1oxhBVHyQ/preview">3andar-Video-Creed</option>
-                <option value="https://drive.google.com/file/d/1geQuGZ5XIREzB_XNoSLnlle1oxhBVHyQ/preview">3andar-Imagem-Creed</option>
-                <option value="https://drive.google.com/file/d/1geQuGZ5XIREzB_XNoSLnlle1oxhBVHyQ/preview">3andar-Video-Beat</option>
-                <option value="https://drive.google.com/file/d/1geQuGZ5XIREzB_XNoSLnlle1oxhBVHyQ/preview">3andar-Imagem-Beat</option>
-                <option value="https://drive.google.com/file/d/1geQuGZ5XIREzB_XNoSLnlle1oxhBVHyQ/preview">3andar-Video-Dance</option>
-                <option value="https://drive.google.com/file/d/1geQuGZ5XIREzB_XNoSLnlle1oxhBVHyQ/preview">3andar-Imagem-Dance</option>
+                <!-- Certifique-se de corrigir os valores repetidos -->
             </select>
         </div>
 
@@ -39,7 +32,13 @@
         function updateVideo() {
             const videoSelector = document.getElementById('videoSelector');
             const videoPlayer = document.getElementById('videoPlayer');
-            videoPlayer.src = videoSelector.value;
+            const selectedVideo = videoSelector.value;
+
+            if (selectedVideo) {
+                videoPlayer.src = selectedVideo;
+            } else {
+                videoPlayer.src = ''; // Limpa o player se nenhum vídeo for selecionado
+            }
         }
     </script>
 </body>

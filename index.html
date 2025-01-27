@@ -28,13 +28,6 @@
     </div>
 
     <script>
-        window.onload = function() {
-            // Carrega o primeiro vídeo automaticamente assim que a página for carregada
-            const videoSelector = document.getElementById('videoSelector');
-            videoSelector.value = "https://www.youtube.com/embed/6aRUvcQOj2s?autoplay=1&loop=1&playlist=6aRUvcQOj2s&vq=hd1080&controls=0&rel=0&showinfo=0&modestbranding=1&autohide=1";
-            updateVideo();
-        };
-
         function updateVideo() {
             const videoSelector = document.getElementById('videoSelector');
             const videoPlayer = document.getElementById('videoPlayer');
@@ -42,6 +35,11 @@
 
             if (selectedVideo) {
                 videoPlayer.src = selectedVideo;
+                videoPlayer.onload = () => {
+
+                    // Força o vídeo a abrir em tela cheia
+                    videoPlayer.requestFullscreen();
+                };
             } else {
                 videoPlayer.src = ''; 
             }
